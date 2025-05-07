@@ -8,26 +8,51 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
   return (
-    <nav className={`py-4 px-6 ${darkMode ? 'bg-gray-900 text-white' : 'bg-white'} shadow-lg`}>
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="flex items-center space-x-2">
-          <Cloud className="text-blue-500" size={24} />
-          <span className="text-xl font-bold">WeatherApp</span>
+    <header
+      className={`w-full py-4 px-6 ${
+        darkMode ? 'bg-neutral-900 text-white' : 'bg-white text-gray-900'
+      } shadow-md transition-colors duration-300`}
+    >
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
+        <div className="flex items-center gap-3">
+          <Cloud className="text-sky-500" size={26} />
+          <span className="text-2xl font-semibold select-none">WeatherApp</span>
         </div>
-        
-        <div className="flex items-center space-x-6">
-          <a href="#" className="hover:text-blue-500 transition-colors">Home</a>
-          <a href="#" className="hover:text-blue-500 transition-colors">Forecast</a>
-          <a href="#" className="hover:text-blue-500 transition-colors">Maps</a>
+
+        <nav className="flex items-center gap-5 text-sm font-medium">
+          <a
+            href="#"
+            className="hover:text-sky-600 dark:hover:text-sky-400 transition-colors duration-200"
+          >
+            Home
+          </a>
+          <a
+            href="#"
+            className="hover:text-sky-600 dark:hover:text-sky-400 transition-colors duration-200"
+          >
+            Forecast
+          </a>
+          <a
+            href="#"
+            className="hover:text-sky-600 dark:hover:text-sky-400 transition-colors duration-200"
+          >
+            Maps
+          </a>
+
           <button
             onClick={toggleDarkMode}
-            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            aria-label="Toggle theme"
+            className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-sky-100 dark:hover:bg-sky-900 transition-colors"
           >
-            {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+            {darkMode ? (
+              <Sun size={18} className="text-yellow-400" />
+            ) : (
+              <Moon size={18} className="text-blue-600" />
+            )}
           </button>
-        </div>
+        </nav>
       </div>
-    </nav>
+    </header>
   );
 };
 
